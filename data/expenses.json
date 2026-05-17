@@ -3,13 +3,14 @@
   "transactions": [
     {
       "id": "1779035407806-fii3oi",
-      "amount": 3.6,
+      "amount": 7.2,
       "type": "debit",
       "date": "2026-05-16",
       "category": "Travel",
       "payment": "Card",
       "description": "[Asha] Wembley <-> Green Park Tube ticket return",
-      "createdAt": 1779035407806
+      "createdAt": 1779035407806,
+      "updatedAt": 1779035458860
     },
     {
       "id": "1779020796081-gjz40m",
@@ -24,5 +25,5 @@
     }
   ],
   "deletedIds": [],
-  "updatedAt": "2026-05-17T16:30:08.512Z"
+  "updatedAt": "2026-05-17T16:31:08.574Z"
 }
