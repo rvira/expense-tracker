@@ -499,6 +499,27 @@
 
         .btn-danger:hover, .btn-danger:active { opacity: 1; }
 
+        .btn-edit {
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            padding: 8px 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            opacity: 0.6;
+            transition: opacity 0.2s, color 0.2s;
+            min-width: 36px;
+            min-height: 36px;
+        }
+
+        .btn-edit:hover, .btn-edit:active { opacity: 1; color: var(--accent); }
+
+        .txn-actions {
+            display: flex;
+            gap: 2px;
+            flex-shrink: 0;
+        }
+
         /* Two-col layout */
         .two-col {
             display: grid;
@@ -1201,6 +1222,58 @@
         </div>
     </div>
 
+    <!-- Edit transaction overlay -->
+    <div class="overlay" id="edit-overlay">
+        <div class="overlay-card">
+            <h2>Edit transaction</h2>
+            <div class="lead" id="edit-lead">Change any field below. Changes sync to your other devices.</div>
+            <form id="edit-form">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label>Type</label>
+                        <div class="type-toggle" id="edit-type-toggle">
+                            <button type="button" data-type="debit">Debit</button>
+                            <button type="button" data-type="credit">Credit</button>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Amount (£)</label>
+                        <input type="number" id="edit-amount" step="0.01" min="0" inputmode="decimal" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Date</label>
+                        <input type="date" id="edit-date" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Category</label>
+                        <select id="edit-category">
+                            <option value="Food">Food</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Payment Method</label>
+                        <select id="edit-payment">
+                            <option value="Cash">Cash</option>
+                            <option value="Card">Card</option>
+                            <option value="UPI">UPI</option>
+                        </select>
+                    </div>
+                    <div class="form-field span-all">
+                        <label>Description</label>
+                        <input type="text" id="edit-desc">
+                    </div>
+                </div>
+                <div class="actions">
+                    <button type="button" class="btn btn-ghost" id="edit-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Account menu (popup from sync chip when signed in) -->
     <div class="menu" id="account-menu">
         <div class="menu-meta" id="account-meta">—</div>
@@ -1516,7 +1589,10 @@
                         </div>
                     </div>
                     <div class="txn-amount ${t.type}">${sign}${fmt(t.amount)}</div>
-                    <button class="btn-danger" data-delete="${t.id}" title="Delete">✕</button>
+                    <div class="txn-actions">
+                        <button class="btn-edit" data-edit="${t.id}" title="Edit" aria-label="Edit">✎</button>
+                        <button class="btn-danger" data-delete="${t.id}" title="Delete" aria-label="Delete">✕</button>
+                    </div>
                 </div>
             `;
         }
@@ -1541,6 +1617,12 @@
                     saveTransactions();
                     renderAll();
                     showToast('Transaction deleted');
+                });
+            });
+            container.querySelectorAll('[data-edit]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openEdit(btn.dataset.edit);
                 });
             });
         }
@@ -1708,6 +1790,74 @@
             renderDayList();
         }
 
+        // ---------- Edit transaction ----------
+        let editingId = null;
+        let editFormType = 'debit';
+
+        function openEdit(id) {
+            const txn = state.transactions.find(t => t.id === id);
+            if (!txn) return;
+            editingId = id;
+            editFormType = txn.type;
+            document.getElementById('edit-amount').value = txn.amount;
+            document.getElementById('edit-date').value = txn.date;
+            document.getElementById('edit-category').value = txn.category;
+            document.getElementById('edit-payment').value = txn.payment;
+            document.getElementById('edit-desc').value = txn.description === '(no description)' ? '' : txn.description;
+            document.querySelectorAll('#edit-type-toggle button').forEach(b => {
+                b.classList.remove('active', 'debit', 'credit');
+                if (b.dataset.type === txn.type) b.classList.add('active', txn.type);
+            });
+            document.getElementById('edit-overlay').classList.add('show');
+            setTimeout(() => document.getElementById('edit-desc').focus(), 50);
+        }
+
+        function closeEdit() {
+            editingId = null;
+            document.getElementById('edit-overlay').classList.remove('show');
+        }
+
+        document.querySelectorAll('#edit-type-toggle button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#edit-type-toggle button').forEach(b => {
+                    b.classList.remove('active', 'debit', 'credit');
+                });
+                btn.classList.add('active', btn.dataset.type);
+                editFormType = btn.dataset.type;
+            });
+        });
+
+        document.getElementById('edit-cancel').addEventListener('click', closeEdit);
+
+        document.getElementById('edit-overlay').addEventListener('click', (e) => {
+            if (e.target.id === 'edit-overlay') closeEdit();
+        });
+
+        document.getElementById('edit-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!editingId) return closeEdit();
+            const idx = state.transactions.findIndex(t => t.id === editingId);
+            if (idx === -1) return closeEdit();
+            const amount = parseFloat(document.getElementById('edit-amount').value);
+            if (!amount || amount <= 0) return;
+            const original = state.transactions[idx];
+            const updated = {
+                ...original,
+                amount,
+                type: editFormType,
+                date: document.getElementById('edit-date').value,
+                category: document.getElementById('edit-category').value,
+                payment: document.getElementById('edit-payment').value,
+                description: document.getElementById('edit-desc').value.trim() || '(no description)',
+                updatedAt: Date.now(),
+            };
+            state.transactions[idx] = updated;
+            saveTransactions();
+            renderAll();
+            closeEdit();
+            showToast('Transaction updated');
+        });
+
         // ---------- GitHub sync ----------
         function getToken() { return localStorage.getItem(TOKEN_KEY); }
 
@@ -1804,8 +1954,13 @@
             const byId = new Map();
             const remoteTxns = (remote && remote.transactions) || [];
             const remoteDeleted = (remote && remote.deletedIds) || [];
+            // Pick the version with the most recent updatedAt; entries without updatedAt fall back to createdAt
+            const stamp = t => t.updatedAt || t.createdAt || 0;
             for (const t of remoteTxns) byId.set(t.id, t);
-            for (const t of local.transactions) byId.set(t.id, t);
+            for (const t of local.transactions) {
+                const existing = byId.get(t.id);
+                if (!existing || stamp(t) >= stamp(existing)) byId.set(t.id, t);
+            }
             const deletedIds = new Set([...remoteDeleted, ...local.deletedIds]);
             for (const id of deletedIds) byId.delete(id);
             const transactions = Array.from(byId.values()).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
