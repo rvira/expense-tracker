@@ -1050,20 +1050,20 @@
             <div class="stat-grid">
                 <div class="stat-card debit">
                     <div class="label">Total Debited</div>
-                    <div class="value" id="stat-debit">₹0</div>
+                    <div class="value" id="stat-debit">£0</div>
                 </div>
                 <div class="stat-card credit">
                     <div class="label">Total Credited</div>
-                    <div class="value" id="stat-credit">₹0</div>
+                    <div class="value" id="stat-credit">£0</div>
                 </div>
                 <div class="stat-card">
                     <div class="label">Today's Spend</div>
-                    <div class="value" id="stat-today">₹0</div>
+                    <div class="value" id="stat-today">£0</div>
                     <div class="meta" id="stat-today-meta">—</div>
                 </div>
                 <div class="stat-card">
                     <div class="label">This Month's Spend</div>
-                    <div class="value" id="stat-month">₹0</div>
+                    <div class="value" id="stat-month">£0</div>
                     <div class="meta" id="stat-month-meta">—</div>
                 </div>
             </div>
@@ -1080,7 +1080,7 @@
                             </div>
                         </div>
                         <div class="form-field">
-                            <label>Amount (₹)</label>
+                            <label>Amount (£)</label>
                             <input type="number" id="f-amount" step="0.01" min="0" inputmode="decimal" placeholder="0.00" required>
                         </div>
                         <div class="form-field">
@@ -1156,11 +1156,11 @@
                 <div class="range-summary" id="range-summary" style="margin-top: 14px;">
                     <div class="item debit">
                         <span class="label">Debited</span>
-                        <span class="value" id="range-debit">₹0</span>
+                        <span class="value" id="range-debit">£0</span>
                     </div>
                     <div class="item credit">
                         <span class="label">Credited</span>
-                        <span class="value" id="range-credit">₹0</span>
+                        <span class="value" id="range-credit">£0</span>
                     </div>
                     <div class="item">
                         <span class="label">Entries</span>
@@ -1272,7 +1272,7 @@
 
         function fmt(amount) {
             const n = Number(amount) || 0;
-            return '₹' + n.toLocaleString('en-IN', { minimumFractionDigits: n % 1 === 0 ? 0 : 2, maximumFractionDigits: 2 });
+            return '£' + n.toLocaleString('en-GB', { minimumFractionDigits: n % 1 === 0 ? 0 : 2, maximumFractionDigits: 2 });
         }
 
         function todayStr() {
