@@ -8,10 +8,11 @@
       "date": "2026-05-15",
       "category": "Travel",
       "payment": "Cash",
-      "description": "Wembley <-> Green Park Tube ticket return",
-      "createdAt": 1779020796081
+      "description": "[Amish] Wembley <-> Green Park Tube ticket return",
+      "createdAt": 1779020796081,
+      "updatedAt": 1779021690892
     }
   ],
   "deletedIds": [],
-  "updatedAt": "2026-05-17T12:39:36.604Z"
+  "updatedAt": "2026-05-17T12:41:31.299Z"
 }
