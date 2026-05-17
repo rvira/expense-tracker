@@ -17,9 +17,10 @@
       "type": "debit",
       "date": "2026-05-16",
       "category": "Other",
-      "payment": "Cash",
+      "payment": "Card",
       "description": "Primark",
-      "createdAt": 1779056492745
+      "createdAt": 1779056492745,
+      "updatedAt": 1779056557244
     },
     {
       "id": "1779050850102-p6jui2",
@@ -27,9 +28,10 @@
       "type": "debit",
       "date": "2026-05-17",
       "category": "Food",
-      "payment": "Cash",
+      "payment": "Card",
       "description": "Milk",
-      "createdAt": 1779050850102
+      "createdAt": 1779050850102,
+      "updatedAt": 1779056552795
     },
     {
       "id": "1779047563628-czm555",
@@ -37,9 +39,10 @@
       "type": "debit",
       "date": "2026-05-17",
       "category": "Travel",
-      "payment": "Cash",
+      "payment": "Card",
       "description": "Cable car",
-      "createdAt": 1779047563628
+      "createdAt": 1779047563628,
+      "updatedAt": 1779056568695
     },
     {
       "id": "1779035650094-e5xg9o",
@@ -50,7 +53,7 @@
       "payment": "Card",
       "description": "[Rishabh] towards Grenich Tube return",
       "createdAt": 1779035650094,
-      "updatedAt": 1779047392383
+      "updatedAt": 1779056562045
     },
     {
       "id": "1779035634739-u7hd12",
@@ -108,5 +111,5 @@
     }
   ],
   "deletedIds": [],
-  "updatedAt": "2026-05-17T22:22:09.465Z"
+  "updatedAt": "2026-05-17T22:23:09.671Z"
 }
