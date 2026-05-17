@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779056528774-cjp0tx",
+      "amount": 7.19,
+      "type": "debit",
+      "date": "2026-05-16",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Tesco in Bath",
+      "createdAt": 1779056528774
+    },
+    {
       "id": "1779056492745-pn02yj",
       "amount": 4.3,
       "type": "debit",
@@ -98,5 +108,5 @@
     }
   ],
   "deletedIds": [],
-  "updatedAt": "2026-05-17T22:21:33.156Z"
+  "updatedAt": "2026-05-17T22:22:09.465Z"
 }
