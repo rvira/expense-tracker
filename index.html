@@ -797,7 +797,7 @@
         .range-summary .item.debit .value { color: var(--debit); }
         .range-summary .item.credit .value { color: var(--credit); }
 
-        /* Sync chip */
+        /* Header actions row (chip + theme toggle) */
         .header-actions {
             display: flex;
             align-items: center;
@@ -805,56 +805,7 @@
             flex-shrink: 0;
         }
 
-        .sync-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 12px;
-            border-radius: 12px;
-            border: 1px solid var(--card-border);
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            color: var(--text-bright);
-            cursor: pointer;
-            font-size: 0.78rem;
-            font-weight: 600;
-            font-family: inherit;
-            min-height: 44px;
-            transition: background 0.2s, color 0.2s;
-            white-space: nowrap;
-            max-width: 200px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .sync-chip:hover { background: var(--ghost-bg-hover); }
-        .sync-chip .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            background: var(--text-muted);
-        }
-        .sync-chip[data-state="signed-out"] .dot { background: var(--text-muted); }
-        .sync-chip[data-state="syncing"] .dot {
-            background: var(--accent);
-            animation: pulse 1s ease-in-out infinite;
-        }
-        .sync-chip[data-state="synced"] .dot { background: var(--credit); }
-        .sync-chip[data-state="offline"] .dot { background: var(--cat-bills); }
-        .sync-chip[data-state="error"] .dot { background: var(--debit); }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        @media (max-width: 480px) {
-            .sync-chip .label { display: none; }
-            .sync-chip { padding: 0; width: 44px; height: 44px; justify-content: center; }
-        }
-
-        /* Auth overlay */
+        /* Modal overlay (used by edit transaction) */
         .overlay {
             position: fixed;
             inset: 0;
@@ -971,52 +922,6 @@
 
         .overlay-card .error-msg.show { display: block; }
 
-        /* Account menu */
-        .menu {
-            position: fixed;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 6px;
-            box-shadow: var(--shadow);
-            min-width: 180px;
-            display: none;
-            z-index: 1500;
-        }
-
-        .menu.show { display: block; }
-
-        .menu .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            padding: 10px 12px;
-            border: none;
-            background: transparent;
-            color: var(--text);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-family: inherit;
-            text-align: left;
-        }
-
-        .menu .menu-item:hover { background: var(--ghost-bg); }
-        .menu .menu-item.danger { color: var(--debit); }
-        .menu .menu-divider {
-            height: 1px;
-            background: var(--card-border);
-            margin: 4px 0;
-        }
-
-        .menu .menu-meta {
-            padding: 8px 12px;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-        }
-
         /* Toast */
         .toast {
             position: fixed;
@@ -1050,10 +955,7 @@
                 <div class="subtitle">Track your daily spending</div>
             </div>
             <div class="header-actions">
-                <button class="sync-chip" id="sync-chip" data-state="signed-out" aria-label="Sync status">
-                    <span class="dot"></span>
-                    <span class="label" id="sync-label">Sign in</span>
-                </button>
+                <div id="sync-mount"></div>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark theme">
                     <span class="icon-moon">🌙</span>
                     <span class="icon-sun">☀️</span>
@@ -1199,28 +1101,7 @@
 
     <div class="toast" id="toast"></div>
 
-    <!-- Sign-in overlay -->
-    <div class="overlay" id="auth-overlay">
-        <div class="overlay-card">
-            <h2>Sync to GitHub</h2>
-            <div class="lead">Generate a fine-grained Personal Access Token and paste it below. Your expenses will sync to <code>rvira/expense-tracker</code> in <code>data/expenses.json</code>.</div>
-            <ol>
-                <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a></li>
-                <li><strong>Token name:</strong> <code>expense-tracker</code></li>
-                <li><strong>Expiration:</strong> 1 year (or your preference)</li>
-                <li><strong>Repository access:</strong> Only select repositories → <code>expense-tracker</code></li>
-                <li><strong>Permissions → Repository permissions → Contents:</strong> Read and write</li>
-                <li>Click <strong>Generate token</strong>, copy it, paste below</li>
-            </ol>
-            <div class="field-label">Paste token</div>
-            <input type="password" id="token-input" placeholder="github_pat_..." autocomplete="off" spellcheck="false">
-            <div class="error-msg" id="auth-error"></div>
-            <div class="actions">
-                <button class="btn btn-ghost" id="auth-skip">Skip</button>
-                <button class="btn btn-primary" id="auth-connect">Connect</button>
-            </div>
-        </div>
-    </div>
+    <script src="gh-sync.js"></script>
 
     <!-- Edit transaction overlay -->
     <div class="overlay" id="edit-overlay">
@@ -1274,29 +1155,12 @@
         </div>
     </div>
 
-    <!-- Account menu (popup from sync chip when signed in) -->
-    <div class="menu" id="account-menu">
-        <div class="menu-meta" id="account-meta">—</div>
-        <div class="menu-divider"></div>
-        <button class="menu-item" id="menu-sync-now">🔄 Sync now</button>
-        <button class="menu-item danger" id="menu-signout">⏻ Sign out (this device)</button>
-    </div>
 
     <script>
         const STORAGE_KEY = 'expense_tracker_v1';
         const DELETED_KEY = 'expense_tracker_deleted_v1';
         const THEME_KEY = 'expense_tracker_theme';
-        const TOKEN_KEY = 'expense_tracker_gh_token';
-        const USER_KEY = 'expense_tracker_gh_user';
         const THEME_COLORS = { dark: '#0f0c29', light: '#eef2ff' };
-
-        const GH = {
-            owner: 'rvira',
-            repo: 'expense-tracker',
-            branch: 'main',
-            path: 'data/expenses.json',
-            apiBase: 'https://api.github.com',
-        };
 
         // Read computed CSS variable from :root (or themed root)
         function cssVar(name) {
@@ -1315,13 +1179,9 @@
             quickRange: 'all',
             customFrom: null,
             customTo: null,
-            sha: null,
-            user: localStorage.getItem(USER_KEY) || null,
-            syncState: 'signed-out',
-            syncTimer: null,
-            syncing: false,
-            dirty: false,
         };
+
+        let sync = null; // assigned at boot; null when running offline-only
 
         function loadTransactions() {
             try {
@@ -1340,7 +1200,50 @@
         function saveTransactions() {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state.transactions));
             localStorage.setItem(DELETED_KEY, JSON.stringify(state.deletedIds));
-            scheduleCloudSync();
+            if (sync) sync.scheduleSync();
+        }
+
+        // App-specific merge: union by transaction id (newer updatedAt wins),
+        // honoring tombstones from both sides. Passed into GhSync.
+        function mergeData(remote, local) {
+            const byId = new Map();
+            const remoteTxns = (remote && remote.transactions) || [];
+            const remoteDeleted = (remote && remote.deletedIds) || [];
+            const localTxns = (local && local.transactions) || [];
+            const localDeleted = (local && local.deletedIds) || [];
+            const stamp = t => t.updatedAt || t.createdAt || 0;
+            for (const t of remoteTxns) byId.set(t.id, t);
+            for (const t of localTxns) {
+                const existing = byId.get(t.id);
+                if (!existing || stamp(t) >= stamp(existing)) byId.set(t.id, t);
+            }
+            const deletedIds = new Set([...remoteDeleted, ...localDeleted]);
+            for (const id of deletedIds) byId.delete(id);
+            const transactions = Array.from(byId.values()).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+            return {
+                v: 1,
+                transactions,
+                deletedIds: Array.from(deletedIds),
+                updatedAt: new Date().toISOString(),
+            };
+        }
+
+        function buildLocalPayload() {
+            return {
+                v: 1,
+                transactions: state.transactions,
+                deletedIds: state.deletedIds,
+                updatedAt: new Date().toISOString(),
+            };
+        }
+
+        function applyRemote(data) {
+            if (!data) return;
+            state.transactions = data.transactions || [];
+            state.deletedIds = data.deletedIds || [];
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state.transactions));
+            localStorage.setItem(DELETED_KEY, JSON.stringify(state.deletedIds));
+            renderAll();
         }
 
         function fmt(amount) {
@@ -1858,317 +1761,30 @@
             showToast('Transaction updated');
         });
 
-        // ---------- GitHub sync ----------
-        function getToken() { return localStorage.getItem(TOKEN_KEY); }
+        // ---------- Cloud sync (init) ----------
 
-        function setSyncState(s, label) {
-            state.syncState = s;
-            const chip = document.getElementById('sync-chip');
-            chip.setAttribute('data-state', s);
-            const labelEl = document.getElementById('sync-label');
-            const defaults = {
-                'signed-out': 'Sign in',
-                'syncing': 'Syncing…',
-                'synced': state.user ? '@' + state.user : 'Synced',
-                'offline': 'Offline',
-                'error': 'Sync error',
-            };
-            labelEl.textContent = label || defaults[s] || s;
-            chip.setAttribute('aria-label', labelEl.textContent);
-            chip.setAttribute('title', labelEl.textContent);
-        }
-
-        async function ghFetch(path, opts = {}) {
-            const token = getToken();
-            if (!token) throw new Error('Not signed in');
-            const res = await fetch(GH.apiBase + path, {
-                ...opts,
-                headers: {
-                    'Accept': 'application/vnd.github+json',
-                    'Authorization': 'Bearer ' + token,
-                    'X-GitHub-Api-Version': '2022-11-28',
-                    ...(opts.body ? { 'Content-Type': 'application/json' } : {}),
-                    ...(opts.headers || {}),
-                },
+        // All token storage, GitHub API calls, sign-in modal, sync chip,
+        // and account menu live in gh-sync.js. We just wire it up with the
+        // app-specific merge function and an onLoad callback.
+        function initSync() {
+            sync = new GhSync({
+                owner: 'rvira',
+                repo: 'expense-tracker',
+                branch: 'main',
+                path: 'data/expenses.json',
+                appName: 'Expense Tracker',
+                storagePrefix: 'expense_tracker',
+                mountChip: '#sync-mount',
+                merge: mergeData,
+                buildPayload: buildLocalPayload,
+                onLoad: applyRemote,
             });
-            return res;
         }
-
-        async function validateToken(token) {
-            const res = await fetch(GH.apiBase + '/user', {
-                headers: {
-                    'Accept': 'application/vnd.github+json',
-                    'Authorization': 'Bearer ' + token,
-                    'X-GitHub-Api-Version': '2022-11-28',
-                },
-            });
-            if (!res.ok) {
-                if (res.status === 401) throw new Error('Invalid token (401)');
-                throw new Error('Validation failed (' + res.status + ')');
-            }
-            const data = await res.json();
-            return data.login;
-        }
-
-        // base64 ↔ utf-8 (the API requires base64-encoded content)
-        function b64encode(str) {
-            return btoa(unescape(encodeURIComponent(str)));
-        }
-        function b64decode(b64) {
-            try { return decodeURIComponent(escape(atob(b64.replace(/\s/g, '')))); }
-            catch { return atob(b64.replace(/\s/g, '')); }
-        }
-
-        async function fetchRemote() {
-            const path = `/repos/${GH.owner}/${GH.repo}/contents/${GH.path}?ref=${GH.branch}`;
-            const res = await ghFetch(path);
-            if (res.status === 404) return { sha: null, data: null };
-            if (!res.ok) throw new Error('Fetch failed (' + res.status + ')');
-            const j = await res.json();
-            const text = b64decode(j.content || '');
-            let parsed = null;
-            try { parsed = JSON.parse(text); } catch {}
-            return { sha: j.sha, data: parsed };
-        }
-
-        async function putRemote(payload, sha) {
-            const path = `/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`;
-            const body = {
-                message: `Update expenses (${new Date().toISOString()})`,
-                content: b64encode(JSON.stringify(payload, null, 2)),
-                branch: GH.branch,
-            };
-            if (sha) body.sha = sha;
-            const res = await ghFetch(path, { method: 'PUT', body: JSON.stringify(body) });
-            if (!res.ok) {
-                const errBody = await res.text();
-                const err = new Error('Put failed (' + res.status + '): ' + errBody.slice(0, 200));
-                err.status = res.status;
-                throw err;
-            }
-            const j = await res.json();
-            return j.content && j.content.sha;
-        }
-
-        function mergeData(remote, local) {
-            const byId = new Map();
-            const remoteTxns = (remote && remote.transactions) || [];
-            const remoteDeleted = (remote && remote.deletedIds) || [];
-            // Pick the version with the most recent updatedAt; entries without updatedAt fall back to createdAt
-            const stamp = t => t.updatedAt || t.createdAt || 0;
-            for (const t of remoteTxns) byId.set(t.id, t);
-            for (const t of local.transactions) {
-                const existing = byId.get(t.id);
-                if (!existing || stamp(t) >= stamp(existing)) byId.set(t.id, t);
-            }
-            const deletedIds = new Set([...remoteDeleted, ...local.deletedIds]);
-            for (const id of deletedIds) byId.delete(id);
-            const transactions = Array.from(byId.values()).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-            return {
-                v: 1,
-                transactions,
-                deletedIds: Array.from(deletedIds),
-                updatedAt: new Date().toISOString(),
-            };
-        }
-
-        function buildLocalPayload() {
-            return {
-                v: 1,
-                transactions: state.transactions,
-                deletedIds: state.deletedIds,
-                updatedAt: new Date().toISOString(),
-            };
-        }
-
-        async function cloudSync() {
-            if (!getToken()) { setSyncState('signed-out'); return; }
-            if (!navigator.onLine) { setSyncState('offline'); state.dirty = true; return; }
-            if (state.syncing) { state.dirty = true; return; }
-            state.syncing = true;
-            setSyncState('syncing');
-            try {
-                const local = { transactions: state.transactions, deletedIds: state.deletedIds };
-                const { sha, data: remote } = await fetchRemote();
-                const merged = mergeData(remote, local);
-                const newSha = await putRemote(merged, sha);
-                state.sha = newSha;
-                // Apply merged result back into local state in case remote had entries we didn't have
-                state.transactions = merged.transactions;
-                state.deletedIds = merged.deletedIds;
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(state.transactions));
-                localStorage.setItem(DELETED_KEY, JSON.stringify(state.deletedIds));
-                renderAll();
-                setSyncState('synced');
-            } catch (e) {
-                if (e && e.status === 409) {
-                    // SHA conflict: retry once with fresh data
-                    state.syncing = false;
-                    state.dirty = true;
-                    return setTimeout(cloudSync, 200);
-                }
-                console.error('Sync failed', e);
-                setSyncState('error', 'Sync error');
-            } finally {
-                state.syncing = false;
-                if (state.dirty) {
-                    state.dirty = false;
-                    setTimeout(cloudSync, 300);
-                }
-            }
-        }
-
-        function scheduleCloudSync() {
-            if (!getToken()) return;
-            state.dirty = true;
-            if (state.syncTimer) clearTimeout(state.syncTimer);
-            state.syncTimer = setTimeout(() => {
-                state.syncTimer = null;
-                state.dirty = false;
-                cloudSync();
-            }, 400);
-        }
-
-        async function initialCloudLoad() {
-            if (!getToken()) { setSyncState('signed-out'); return; }
-            setSyncState('syncing');
-            try {
-                const { sha, data: remote } = await fetchRemote();
-                state.sha = sha;
-                if (remote) {
-                    const local = { transactions: state.transactions, deletedIds: state.deletedIds };
-                    const merged = mergeData(remote, local);
-                    state.transactions = merged.transactions;
-                    state.deletedIds = merged.deletedIds;
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.transactions));
-                    localStorage.setItem(DELETED_KEY, JSON.stringify(state.deletedIds));
-                    renderAll();
-                    // If local had something the remote didn't, push the merged back
-                    const localOnly = local.transactions.some(t => !(remote.transactions || []).find(r => r.id === t.id));
-                    const localDeletes = local.deletedIds.some(id => !(remote.deletedIds || []).includes(id));
-                    if (localOnly || localDeletes) {
-                        await cloudSync();
-                    } else {
-                        setSyncState('synced');
-                    }
-                } else {
-                    // No remote file yet — seed it with our local data (or empty)
-                    await cloudSync();
-                }
-            } catch (e) {
-                console.error('Initial load failed', e);
-                if (!navigator.onLine) setSyncState('offline');
-                else setSyncState('error', 'Sync error');
-            }
-        }
-
-        // ---------- Auth UI ----------
-        function openAuth() {
-            document.getElementById('auth-error').classList.remove('show');
-            document.getElementById('token-input').value = '';
-            document.getElementById('auth-overlay').classList.add('show');
-            setTimeout(() => document.getElementById('token-input').focus(), 50);
-        }
-        function closeAuth() {
-            document.getElementById('auth-overlay').classList.remove('show');
-        }
-
-        document.getElementById('auth-skip').addEventListener('click', closeAuth);
-
-        document.getElementById('auth-connect').addEventListener('click', async () => {
-            const input = document.getElementById('token-input');
-            const errEl = document.getElementById('auth-error');
-            const token = input.value.trim();
-            errEl.classList.remove('show');
-            if (!token) {
-                errEl.textContent = 'Paste a token first.';
-                errEl.classList.add('show');
-                return;
-            }
-            const btn = document.getElementById('auth-connect');
-            btn.disabled = true;
-            btn.textContent = 'Checking…';
-            try {
-                const login = await validateToken(token);
-                localStorage.setItem(TOKEN_KEY, token);
-                localStorage.setItem(USER_KEY, login);
-                state.user = login;
-                closeAuth();
-                showToast(`Signed in as @${login}`);
-                await initialCloudLoad();
-            } catch (e) {
-                errEl.textContent = e.message || 'Token validation failed';
-                errEl.classList.add('show');
-            } finally {
-                btn.disabled = false;
-                btn.textContent = 'Connect';
-            }
-        });
-
-        document.getElementById('token-input').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') document.getElementById('auth-connect').click();
-        });
-
-        document.getElementById('auth-overlay').addEventListener('click', (e) => {
-            if (e.target.id === 'auth-overlay') closeAuth();
-        });
-
-        // ---------- Account menu ----------
-        const menu = document.getElementById('account-menu');
-        function positionMenu() {
-            const chip = document.getElementById('sync-chip');
-            const r = chip.getBoundingClientRect();
-            const menuW = menu.offsetWidth || 200;
-            menu.style.top = (r.bottom + 6) + 'px';
-            menu.style.left = Math.max(8, Math.min(window.innerWidth - menuW - 8, r.right - menuW)) + 'px';
-        }
-        function openMenu() {
-            document.getElementById('account-meta').textContent =
-                state.user ? `Signed in as @${state.user}` : 'Not signed in';
-            menu.classList.add('show');
-            positionMenu();
-        }
-        function closeMenu() { menu.classList.remove('show'); }
-
-        document.getElementById('sync-chip').addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (!getToken()) { openAuth(); return; }
-            if (menu.classList.contains('show')) closeMenu();
-            else openMenu();
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target)) closeMenu();
-        });
-
-        document.getElementById('menu-sync-now').addEventListener('click', () => {
-            closeMenu();
-            cloudSync();
-        });
-
-        document.getElementById('menu-signout').addEventListener('click', () => {
-            if (!confirm('Sign out on this device? Local data stays; the token is removed from this browser.')) return;
-            localStorage.removeItem(TOKEN_KEY);
-            localStorage.removeItem(USER_KEY);
-            state.user = null;
-            state.sha = null;
-            closeMenu();
-            setSyncState('signed-out');
-            showToast('Signed out');
-        });
-
-        // ---------- Online/offline ----------
-        window.addEventListener('online', () => {
-            if (getToken()) cloudSync();
-        });
-        window.addEventListener('offline', () => {
-            if (getToken()) setSyncState('offline');
-        });
 
         // ---------- Boot ----------
         renderAll();
-        if (getToken()) initialCloudLoad();
-        else setSyncState('signed-out');
+        if (window.GhSync) initSync();
+        else console.warn('GhSync library not loaded; running in local-only mode');
     </script>
 </body>
 </html>
