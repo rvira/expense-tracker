@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779047563628-czm555",
+      "amount": 28,
+      "type": "debit",
+      "date": "2026-05-17",
+      "category": "Travel",
+      "payment": "Cash",
+      "description": "Cable car",
+      "createdAt": 1779047563628
+    },
+    {
       "id": "1779035650094-e5xg9o",
       "amount": 7.2,
       "type": "debit",
@@ -14,23 +24,25 @@
     },
     {
       "id": "1779035634739-u7hd12",
-      "amount": 3.6,
+      "amount": 7.2,
       "type": "debit",
       "date": "2026-05-17",
       "category": "Travel",
       "payment": "Card",
-      "description": "[Asha] towards Grenich Tube",
-      "createdAt": 1779035634739
+      "description": "[Asha] towards Grenich Tube return",
+      "createdAt": 1779035634739,
+      "updatedAt": 1779047442616
     },
     {
       "id": "1779035614414-e4alrx",
-      "amount": 3.6,
+      "amount": 7.2,
       "type": "debit",
       "date": "2026-05-17",
       "category": "Travel",
       "payment": "Card",
-      "description": "[Amish] towards Grenich Tube",
-      "createdAt": 1779035614414
+      "description": "[Amish] towards Grenich Tube return",
+      "createdAt": 1779035614414,
+      "updatedAt": 1779047467045
     },
     {
       "id": "1779035481857-bbismy",
@@ -66,5 +78,5 @@
     }
   ],
   "deletedIds": [],
-  "updatedAt": "2026-05-17T19:49:53.320Z"
+  "updatedAt": "2026-05-17T19:52:46.318Z"
 }
