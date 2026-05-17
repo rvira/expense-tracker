@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779050850102-p6jui2",
+      "amount": 2,
+      "type": "debit",
+      "date": "2026-05-17",
+      "category": "Food",
+      "payment": "Cash",
+      "description": "Milk",
+      "createdAt": 1779050850102
+    },
+    {
       "id": "1779047563628-czm555",
       "amount": 28,
       "type": "debit",
@@ -78,5 +88,5 @@
     }
   ],
   "deletedIds": [],
-  "updatedAt": "2026-05-17T19:52:46.318Z"
+  "updatedAt": "2026-05-17T20:47:30.506Z"
 }
