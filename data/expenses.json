@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779056492745-pn02yj",
+      "amount": 4.3,
+      "type": "debit",
+      "date": "2026-05-16",
+      "category": "Other",
+      "payment": "Cash",
+      "description": "Primark",
+      "createdAt": 1779056492745
+    },
+    {
       "id": "1779050850102-p6jui2",
       "amount": 2,
       "type": "debit",
@@ -88,5 +98,5 @@
     }
   ],
   "deletedIds": [],
-  "updatedAt": "2026-05-17T20:47:30.506Z"
+  "updatedAt": "2026-05-17T22:21:33.156Z"
 }
