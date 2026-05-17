@@ -1,6 +1,17 @@
 {
   "v": 1,
-  "transactions": [],
+  "transactions": [
+    {
+      "id": "1779020796081-gjz40m",
+      "amount": 7.2,
+      "type": "debit",
+      "date": "2026-05-15",
+      "category": "Travel",
+      "payment": "Cash",
+      "description": "Wembley <-> Green Park Tube ticket return",
+      "createdAt": 1779020796081
+    }
+  ],
   "deletedIds": [],
-  "updatedAt": "2026-05-17T12:25:05.817Z"
+  "updatedAt": "2026-05-17T12:26:36.815Z"
 }
