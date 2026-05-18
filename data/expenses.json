@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779104062800-s0vzxi",
+      "amount": 10.8,
+      "type": "debit",
+      "date": "2026-05-18",
+      "category": "Travel",
+      "payment": "Cash",
+      "description": "Towards south Kensington",
+      "createdAt": 1779104062801
+    },
+    {
       "id": "1779056528774-cjp0tx",
       "amount": 7.19,
       "type": "debit",
@@ -18,9 +28,9 @@
       "date": "2026-05-16",
       "category": "Other",
       "payment": "Card",
-      "description": "Primark",
+      "description": "Primark in Bath",
       "createdAt": 1779056492745,
-      "updatedAt": 1779056557244
+      "updatedAt": 1779104075662
     },
     {
       "id": "1779050850102-p6jui2",
@@ -46,36 +56,14 @@
     },
     {
       "id": "1779035650094-e5xg9o",
-      "amount": 7.2,
+      "amount": 21.6,
       "type": "debit",
       "date": "2026-05-17",
       "category": "Travel",
       "payment": "Card",
-      "description": "[Rishabh] towards Grenich Tube return",
+      "description": "towards Grenich Tube return",
       "createdAt": 1779035650094,
-      "updatedAt": 1779056562045
-    },
-    {
-      "id": "1779035634739-u7hd12",
-      "amount": 7.2,
-      "type": "debit",
-      "date": "2026-05-17",
-      "category": "Travel",
-      "payment": "Card",
-      "description": "[Asha] towards Grenich Tube return",
-      "createdAt": 1779035634739,
-      "updatedAt": 1779047442616
-    },
-    {
-      "id": "1779035614414-e4alrx",
-      "amount": 7.2,
-      "type": "debit",
-      "date": "2026-05-17",
-      "category": "Travel",
-      "payment": "Card",
-      "description": "[Amish] towards Grenich Tube return",
-      "createdAt": 1779035614414,
-      "updatedAt": 1779047467045
+      "updatedAt": 1779104141558
     },
     {
       "id": "1779035481857-bbismy",
@@ -110,6 +98,9 @@
       "updatedAt": 1779021690892
     }
   ],
-  "deletedIds": [],
-  "updatedAt": "2026-05-18T11:33:01.091Z"
+  "deletedIds": [
+    "1779035634739-u7hd12",
+    "1779035614414-e4alrx"
+  ],
+  "updatedAt": "2026-05-18T12:32:47.828Z"
 }
