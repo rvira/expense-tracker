@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779230624309-s6pk46",
+      "amount": 10.8,
+      "type": "debit",
+      "date": "2026-05-19",
+      "category": "Travel",
+      "payment": "Card",
+      "description": "Towards waterloo",
+      "createdAt": 1779230624309
+    },
+    {
       "id": "1779230448412-tcg1rk",
       "amount": 5.79,
       "type": "debit",
@@ -144,5 +154,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-19T22:42:04.352Z"
+  "updatedAt": "2026-05-19T22:43:44.933Z"
 }
