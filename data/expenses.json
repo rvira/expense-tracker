@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779230448412-tcg1rk",
+      "amount": 5.79,
+      "type": "debit",
+      "date": "2026-05-19",
+      "category": "Food",
+      "payment": "Cash",
+      "description": "Grocery - avacado, chocolates",
+      "createdAt": 1779230448412
+    },
+    {
       "id": "1779183459569-5s6rai",
       "amount": 0.8,
       "type": "debit",
@@ -134,5 +144,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-19T22:40:23.619Z"
+  "updatedAt": "2026-05-19T22:41:23.188Z"
 }
