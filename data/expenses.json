@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779183434703-2xcwzl",
+      "amount": 4.79,
+      "type": "debit",
+      "date": "2026-05-18",
+      "category": "Food",
+      "payment": "Cash",
+      "description": "Sailsburry pizzo",
+      "createdAt": 1779183434703
+    },
+    {
       "id": "1779183347098-tueiwl",
       "amount": 3.6,
       "type": "debit",
@@ -122,5 +132,5 @@
     "1779035634739-u7hd12",
     "1779035614414-e4alrx"
   ],
-  "updatedAt": "2026-05-19T09:36:35.505Z"
+  "updatedAt": "2026-05-19T09:37:35.423Z"
 }
