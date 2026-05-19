@@ -28,8 +28,9 @@
       "date": "2026-05-18",
       "category": "Travel",
       "payment": "Cash",
-      "description": "[Amish] tuje travel from south Kensington to Wembley",
-      "createdAt": 1779183347099
+      "description": "[Amish] tube travel from south Kensington to Wembley",
+      "createdAt": 1779183347099,
+      "updatedAt": 1779183643325
     },
     {
       "id": "1779183300798-il3i3a",
@@ -118,14 +119,14 @@
     },
     {
       "id": "1779020796081-gjz40m",
-      "amount": 7.2,
+      "amount": 21.6,
       "type": "debit",
       "date": "2026-05-15",
       "category": "Travel",
       "payment": "Cash",
       "description": "[Amish] Wembley <-> Green Park Tube ticket return",
       "createdAt": 1779020796081,
-      "updatedAt": 1779021690892
+      "updatedAt": 1779183688122
     }
   ],
   "deletedIds": [
@@ -133,5 +134,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-19T09:40:36.401Z"
+  "updatedAt": "2026-05-19T09:41:36.515Z"
 }
