@@ -107,24 +107,14 @@
     },
     {
       "id": "1779035481857-bbismy",
-      "amount": 7.2,
+      "amount": 21.6,
       "type": "debit",
       "date": "2026-05-16",
       "category": "Travel",
       "payment": "Card",
-      "description": "[Rishabh] Wembley <-> Green Park Tube ticket return",
-      "createdAt": 1779035481857
-    },
-    {
-      "id": "1779035407806-fii3oi",
-      "amount": 7.2,
-      "type": "debit",
-      "date": "2026-05-16",
-      "category": "Travel",
-      "payment": "Card",
-      "description": "[Asha] Wembley <-> Green Park Tube ticket return",
-      "createdAt": 1779035407806,
-      "updatedAt": 1779035458860
+      "description": "Wembley <-> Waterloo Tube ticket return",
+      "createdAt": 1779035481857,
+      "updatedAt": 1779183594938
     },
     {
       "id": "1779020796081-gjz40m",
@@ -140,7 +130,8 @@
   ],
   "deletedIds": [
     "1779035634739-u7hd12",
-    "1779035614414-e4alrx"
+    "1779035614414-e4alrx",
+    "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-19T09:39:36.291Z"
+  "updatedAt": "2026-05-19T09:40:36.401Z"
 }
