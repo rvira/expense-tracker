@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779183347098-tueiwl",
+      "amount": 3.6,
+      "type": "debit",
+      "date": "2026-05-18",
+      "category": "Travel",
+      "payment": "Cash",
+      "description": "[Amish] tuje travel from south Kensington to Wembley",
+      "createdAt": 1779183347099
+    },
+    {
       "id": "1779183300798-il3i3a",
       "amount": 3.5,
       "type": "debit",
@@ -112,5 +122,5 @@
     "1779035634739-u7hd12",
     "1779035614414-e4alrx"
   ],
-  "updatedAt": "2026-05-19T09:35:01.433Z"
+  "updatedAt": "2026-05-19T09:36:35.505Z"
 }
