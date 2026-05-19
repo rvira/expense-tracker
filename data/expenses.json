@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779183300798-il3i3a",
+      "amount": 3.5,
+      "type": "debit",
+      "date": "2026-05-18",
+      "category": "Travel",
+      "payment": "Cash",
+      "description": "Bus travel from museum to Wembley park",
+      "createdAt": 1779183300798
+    },
+    {
       "id": "1779104062800-s0vzxi",
       "amount": 10.8,
       "type": "debit",
@@ -102,5 +112,5 @@
     "1779035634739-u7hd12",
     "1779035614414-e4alrx"
   ],
-  "updatedAt": "2026-05-19T09:31:18.260Z"
+  "updatedAt": "2026-05-19T09:35:01.433Z"
 }
