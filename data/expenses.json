@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779407654557-67yhjp",
+      "amount": 3.29,
+      "type": "debit",
+      "date": "2026-05-20",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Lidl - Milk, avacado, cheese spread",
+      "createdAt": 1779407654557
+    },
+    {
       "id": "1779407548353-ro4k8i",
       "amount": 10.8,
       "type": "debit",
@@ -204,5 +214,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-21T23:53:29.488Z"
+  "updatedAt": "2026-05-21T23:56:46.603Z"
 }
