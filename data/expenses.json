@@ -2,6 +2,26 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779407058274-8hds7a",
+      "amount": 2.63,
+      "type": "debit",
+      "date": "2026-05-21",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Lidl - milk and chocolate",
+      "createdAt": 1779407058274
+    },
+    {
+      "id": "1779407029380-xzkk0x",
+      "amount": 4.25,
+      "type": "debit",
+      "date": "2026-05-21",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Gelato at Victoria Street",
+      "createdAt": 1779407029380
+    },
+    {
       "id": "1779407002987-wm4xeb",
       "amount": 24,
       "type": "debit",
@@ -174,5 +194,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-21T23:43:31.716Z"
+  "updatedAt": "2026-05-21T23:44:31.379Z"
 }
