@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779540000340-7hfp5c",
+      "amount": 3.95,
+      "type": "debit",
+      "date": "2026-05-22",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Sainsburry meal",
+      "createdAt": 1779540000340
+    },
+    {
       "id": "1779539965089-67j5op",
       "amount": 10.8,
       "type": "debit",
@@ -264,5 +274,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-23T12:39:25.759Z"
+  "updatedAt": "2026-05-23T12:40:26.437Z"
 }
