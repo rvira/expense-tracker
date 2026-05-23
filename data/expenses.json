@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779539884409-hv15p4",
+      "amount": 36.45,
+      "type": "debit",
+      "date": "2026-05-22",
+      "category": "Other",
+      "payment": "Card",
+      "description": "Edinburg souvenirs",
+      "createdAt": 1779539884413
+    },
+    {
       "id": "1779407654557-67yhjp",
       "amount": 3.29,
       "type": "debit",
@@ -244,5 +254,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-23T12:36:10.669Z"
+  "updatedAt": "2026-05-23T12:38:05.112Z"
 }
