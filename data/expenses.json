@@ -207,6 +207,36 @@
       "description": "Wembley <-> Green Park Tube ticket return",
       "createdAt": 1779020796081,
       "updatedAt": 1779183706975
+    },
+    {
+      "id": "1779012404790-94ta9x",
+      "amount": 3.6,
+      "type": "debit",
+      "date": "2026-05-15",
+      "category": "Travel",
+      "payment": "Cash",
+      "description": "[Rishabh] Tube towards green park",
+      "createdAt": 1779012404790
+    },
+    {
+      "id": "1779012385461-5vp8e8",
+      "amount": 3.6,
+      "type": "debit",
+      "date": "2026-05-15",
+      "category": "Travel",
+      "payment": "Cash",
+      "description": "[Asha] Tube towards green park",
+      "createdAt": 1779012385461
+    },
+    {
+      "id": "1779012315698-c3q2cw",
+      "amount": 3.6,
+      "type": "debit",
+      "date": "2026-05-15",
+      "category": "Travel",
+      "payment": "Cash",
+      "description": "Tube towards green park",
+      "createdAt": 1779012315700
     }
   ],
   "deletedIds": [
@@ -214,5 +244,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-21T23:59:46.410Z"
+  "updatedAt": "2026-05-23T12:34:22.346Z"
 }
