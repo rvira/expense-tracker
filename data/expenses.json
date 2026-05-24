@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779645435398-unfyeu",
+      "amount": 1.6,
+      "type": "debit",
+      "date": "2026-05-23",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Milk",
+      "createdAt": 1779645435398
+    },
+    {
       "id": "1779540000340-7hfp5c",
       "amount": 3.95,
       "type": "debit",
@@ -274,5 +284,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-24T17:56:17.583Z"
+  "updatedAt": "2026-05-24T17:57:22.646Z"
 }
