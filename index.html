@@ -264,6 +264,8 @@
             border-radius: 16px;
             padding: 20px;
             box-shadow: var(--shadow);
+            min-width: 0;
+            overflow: hidden;
         }
 
         @media (max-width: 600px) {
@@ -296,6 +298,8 @@
             border: 1px solid var(--card-border);
             border-radius: 14px;
             padding: 16px 18px;
+            min-width: 0;
+            overflow: hidden;
         }
 
         @media (max-width: 600px) {
@@ -568,6 +572,7 @@
             align-items: center;
             gap: 10px;
             font-size: 0.85rem;
+            min-width: 0;
         }
 
         .legend-dot {
@@ -577,9 +582,27 @@
             flex-shrink: 0;
         }
 
-        .legend-row .name { flex: 1; color: var(--text-bright); }
-        .legend-row .amt { color: var(--text-strong); font-variant-numeric: tabular-nums; font-weight: 600; }
-        .legend-row .pct { color: var(--text-muted); font-size: 0.78rem; min-width: 38px; text-align: right; }
+        .legend-row .name {
+            flex: 1;
+            color: var(--text-bright);
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .legend-row .amt {
+            color: var(--text-strong);
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .legend-row .pct {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            min-width: 38px;
+            text-align: right;
+            flex-shrink: 0;
+        }
 
         /* Transaction list */
         .txn-list {
@@ -597,12 +620,16 @@
             border: 1px solid var(--row-border);
             border-radius: 10px;
             transition: background 0.15s;
+            min-width: 0;
         }
 
         @media (max-width: 480px) {
-            .txn-row { gap: 8px; padding: 10px; }
+            .txn-row { gap: 6px; padding: 8px 10px; }
             .txn-meta { flex-wrap: wrap; row-gap: 2px; }
-            .txn-amount { font-size: 0.88rem; }
+            .txn-icon { width: 28px; height: 28px; font-size: 0.9rem; }
+            .txn-amount { font-size: 0.82rem; }
+            .btn-edit, .btn-danger { min-width: 30px; min-height: 32px; padding: 6px 6px; font-size: 0.85rem; }
+            .txn-actions { gap: 0; }
         }
 
         .txn-row:hover { background: var(--row-bg-hover); }
@@ -654,6 +681,7 @@
             font-weight: 700;
             font-variant-numeric: tabular-nums;
             white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .txn-amount.debit { color: var(--debit); }
