@@ -2,6 +2,26 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779750566128-hdadwm",
+      "amount": 4.1,
+      "type": "debit",
+      "date": "2026-05-23",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Sainsbury",
+      "createdAt": 1779750566128
+    },
+    {
+      "id": "1779750543694-tnwvh4",
+      "amount": 21.6,
+      "type": "debit",
+      "date": "2026-05-23",
+      "category": "Travel",
+      "payment": "Card",
+      "description": "Towards and back london bridge",
+      "createdAt": 1779750543694
+    },
+    {
       "id": "1779750413086-gg8rgp",
       "amount": 1.8,
       "type": "debit",
@@ -397,5 +417,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T23:08:36.712Z"
+  "updatedAt": "2026-05-25T23:09:36.304Z"
 }
