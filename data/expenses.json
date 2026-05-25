@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779749877166-8x7yt8",
+      "amount": 20,
+      "type": "debit",
+      "date": "2026-05-25",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Lindt",
+      "createdAt": 1779749877166
+    },
+    {
       "id": "1779749839060-s1kchn",
       "amount": 42,
       "type": "debit",
@@ -294,5 +304,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T22:57:36.706Z"
+  "updatedAt": "2026-05-25T22:58:36.508Z"
 }
