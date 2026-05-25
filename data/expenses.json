@@ -2,6 +2,26 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779750256655-ukoei9",
+      "amount": 7.2,
+      "type": "debit",
+      "date": "2026-05-24",
+      "category": "Travel",
+      "payment": "Card",
+      "description": "Bettersea tube travel return",
+      "createdAt": 1779750256655
+    },
+    {
+      "id": "1779750231859-jjli72",
+      "amount": 39.6,
+      "type": "debit",
+      "date": "2026-05-24",
+      "category": "Travel",
+      "payment": "Card",
+      "description": "Uber boat",
+      "createdAt": 1779750231859
+    },
+    {
       "id": "1779750144544-of4vuh",
       "amount": 7.25,
       "type": "debit",
@@ -356,5 +376,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T23:03:36.440Z"
+  "updatedAt": "2026-05-25T23:04:36.756Z"
 }
