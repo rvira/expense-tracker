@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779750309723-r9q6g1",
+      "amount": 21.6,
+      "type": "debit",
+      "date": "2026-05-24",
+      "category": "Travel",
+      "payment": "Card",
+      "description": "Tower bridge - Bettersea return tube",
+      "createdAt": 1779750309723
+    },
+    {
       "id": "1779750256655-ukoei9",
       "amount": 7.2,
       "type": "debit",
@@ -376,5 +386,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T23:04:36.756Z"
+  "updatedAt": "2026-05-25T23:05:36.347Z"
 }
