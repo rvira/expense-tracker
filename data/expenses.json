@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779750662338-1j5u4s",
+      "amount": 319,
+      "type": "debit",
+      "date": "2026-05-23",
+      "category": "Other",
+      "payment": "Card",
+      "description": "Edinburgh- airbnb",
+      "createdAt": 1779750662338
+    },
+    {
       "id": "1779750608171-9x12vd",
       "amount": 6.55,
       "type": "debit",
@@ -427,5 +437,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T23:10:36.826Z"
+  "updatedAt": "2026-05-25T23:11:36.216Z"
 }
