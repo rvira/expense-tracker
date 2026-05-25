@@ -2,6 +2,17 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779750413086-gg8rgp",
+      "amount": 1.8,
+      "type": "debit",
+      "date": "2026-05-24",
+      "category": "Food",
+      "payment": "Cash",
+      "description": "Tesco - blueberry",
+      "createdAt": 1779750413086,
+      "updatedAt": 1779750420322
+    },
+    {
       "id": "1779750309723-r9q6g1",
       "amount": 21.6,
       "type": "debit",
@@ -386,5 +397,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T23:06:36.354Z"
+  "updatedAt": "2026-05-25T23:07:36.404Z"
 }
