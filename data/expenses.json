@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779750608171-9x12vd",
+      "amount": 6.55,
+      "type": "debit",
+      "date": "2026-05-23",
+      "category": "Food",
+      "payment": "Card",
+      "description": "Tesco- meal deal,pasta and squashes",
+      "createdAt": 1779750608171
+    },
+    {
       "id": "1779750566128-hdadwm",
       "amount": 4.1,
       "type": "debit",
@@ -417,5 +427,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T23:09:36.304Z"
+  "updatedAt": "2026-05-25T23:10:36.826Z"
 }
