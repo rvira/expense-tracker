@@ -2,6 +2,26 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779750144544-of4vuh",
+      "amount": 7.25,
+      "type": "debit",
+      "date": "2026-05-25",
+      "category": "Other",
+      "payment": "Card",
+      "description": "Tesco - mealdeal & milk",
+      "createdAt": 1779750144544
+    },
+    {
+      "id": "1779750120531-yw2i4a",
+      "amount": 10,
+      "type": "debit",
+      "date": "2026-05-25",
+      "category": "Other",
+      "payment": "Card",
+      "description": "Jewellery",
+      "createdAt": 1779750120531
+    },
+    {
       "id": "1779750083328-rj1flk",
       "amount": 51.14,
       "type": "debit",
@@ -336,5 +356,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T23:01:36.527Z"
+  "updatedAt": "2026-05-25T23:02:36.691Z"
 }
