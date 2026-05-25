@@ -2,6 +2,16 @@
   "v": 1,
   "transactions": [
     {
+      "id": "1779750715674-ufnaw3",
+      "amount": 146,
+      "type": "debit",
+      "date": "2026-05-23",
+      "category": "Travel",
+      "payment": "Card",
+      "description": "Bath tix",
+      "createdAt": 1779750715674
+    },
+    {
       "id": "1779750662338-1j5u4s",
       "amount": 319,
       "type": "debit",
@@ -437,5 +447,5 @@
     "1779035614414-e4alrx",
     "1779035407806-fii3oi"
   ],
-  "updatedAt": "2026-05-25T23:11:36.216Z"
+  "updatedAt": "2026-05-25T23:12:36.475Z"
 }
